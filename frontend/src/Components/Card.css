@@ -1,0 +1,49 @@
+.card {
+    /* border: 2px solid red; */
+    width:40%;
+    margin: 0.5rem 0;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    padding: 1.25rem;
+    max-height: 20rem; 
+    overflow: hidden; 
+    background-color: white;
+}
+
+  
+  .card-content {
+    padding: 1.25rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .card-details p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: #555;
+  }
+  
+  .card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0252a7;
+    text-decoration: none;
+  }
+ 
+  @media (min-width: 768px) {
+    .card {
+      width: 60%;
+    }
+  }
+  

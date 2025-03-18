@@ -1,0 +1,27 @@
+body{
+    overflow: hidden;
+    background-color: #f5faff;
+}
+
+.scroll-container {
+    background-color: #f5faff;
+    overflow-y: auto;   
+    height: 80vh;      
+    padding: 10px;
+    
+    display: flex;      
+    flex-wrap: wrap;   
+    justify-content: space-around; 
+    gap: 20px;         
+  }
+  
+  .scroll-container .card {
+    width: 45%;        
+  }
+  .gallery-conatiner{
+    overflow: hidden;
+  }
+  h1{
+    color: #204080;
+    margin: 2%;
+  }

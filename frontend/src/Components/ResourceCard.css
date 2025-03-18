@@ -1,0 +1,71 @@
+.resource-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2vw;
+    margin: 2vw; 
+    max-width: 90%; 
+    width: 30vw; 
+    height: 47vh;
+    text-align: center; /* Center content */
+    box-sizing: border-box;
+}
+
+.faculty-image {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1vw;
+}
+
+.faculty-name {
+    font-size: 1.2em;
+    margin-bottom: 0.5vw;
+}
+
+.faculty-description {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 1.5vw;
+}
+
+/* Grouping the buttons */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+    flex-wrap: wrap; /* Allows wrapping of buttons for smaller screens */
+}
+
+/* Styling for the primary button */
+.faculty-button {
+    display: inline-block;
+    padding: 1vw 2vw;
+    background-color: #0059b8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faculty-button:hover {
+    background-color: #00438a;
+}
+
+/* Styling for the secondary button */
+.faculty-button.secondary {
+    background-color: #6c757d; /* Gray color for the secondary button */
+}
+
+.faculty-button.secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Media query for larger screens */
+@media (min-width: 1024px) {
+    .resource-card {
+        max-width: 300px;
+    }
+}

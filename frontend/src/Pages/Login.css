@@ -1,0 +1,150 @@
+
+.login-container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.login-left {
+    flex: 1;
+   
+    background: url('https://img.freepik.com/free-vector/abstract-modern-blue-watercolor-background_1055-2789.jpg?t=st=1725955690~exp=1725959290~hmac=2310c54b5917ae117519e362086af7642588ba149884c99a1344bff423db9dbf&w=826') no-repeat center ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-size: cover;
+}
+
+.branding {
+    text-align: center;
+}
+
+.branding h1 {
+    font-size: 3.5rem;
+    color: #204080;
+    font-weight: bold;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-left::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://img.freepik.com/free-photo/curvy-blue-wave-lines-background-presentation-backdrop_1017-46750.jpg?t=st=1725955960~exp=1725959560~hmac=d621e514443de0a09c02cc3e848476e78220ccd5ba5e3f8e36a10aa4bc66d4f0&w=1380') no-repeat center;
+    background-size: cover;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+
+.login-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.login-box {
+    width: 350px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1d1d1f;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+
+.checkbox-group input {
+    margin-right: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #34c3ff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #1da1f2;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .button-container {
+    margin-top: 16px;
+  }
+  
+  .close-button {
+    padding: 8px 16px;
+    background-color: #3b82f6; /* Blue-500 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: #2563eb; /* Darker Blue */
+  }
+  

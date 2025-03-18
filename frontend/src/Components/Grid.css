@@ -1,0 +1,35 @@
+body {
+  overflow: hidden;
+  background-color: #f5faff;
+}
+
+.scroll-container {
+  background-color: #f5faff;
+  overflow-y: auto;  
+  height: 80vh;       
+  padding: 10px;
+  
+  display: flex;      
+  flex-wrap: wrap;   
+  justify-content: space-between; /* Add space between the cards */
+  gap: 20px;         
+}
+
+.scroll-container .card {
+  flex-basis: calc(25% - 20px); /* Each card will take 25% of the width minus the gap */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+h1 {
+  background-color: #f5faff;
+  color: #5189f1;
+  margin: 2%;
+}
+
+.notfound{
+  /* background-color: #000000;
+  color: white ; */
+  height: 50vh;
+  font-size: larger;
+  text-align: center;
+}
