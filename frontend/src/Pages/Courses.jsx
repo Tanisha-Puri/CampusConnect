@@ -33,7 +33,10 @@ function Courses() {
           <div className="course-item" key={index}>
             <h3>{course.title}</h3>
             <p>{course.branch}</p>
-            <button className="open-button" onClick={() => handleOpen(course.title)}>Open</button>
+            <div className='btn-box'> 
+            <button className="open-button" onClick={() => handleOpen(course.title)}>Notes</button>
+            <button className="open-button" onClick={() => handleOpen(course.title)}>PYQs</button>
+            </div>
           </div>
         ))}
       </div>

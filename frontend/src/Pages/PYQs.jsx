@@ -2,7 +2,7 @@ import React from "react";
 
 // import { useNavigate } from 'react-router-dom';
 import Navbar from "../Components/Navbar";
-
+import  './PYQs.css';
 // import Grid from "../Components/Grid";
 // import Gridresource from "../Components/Gridresource";
 
@@ -17,6 +17,9 @@ function Resources() {
                 <Courses></Courses>
                 {/* <Filter /> */}
               {/* <Grid></Grid> */}
+
+              {/* <button className="btn">PYQs</button>
+              <button className="btn">Study Material</button> */}
             </div>
         </div>
     );

@@ -4,6 +4,8 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import Course from "../models/courses.js";
+import PYQs from '../models/pyq.js' ; 
+import Notes from '../models/notes.js';
 
 const secret = "sun#shine@1";
 
@@ -76,3 +78,30 @@ export async function getCourses(req , res){
         return res.status(500).json({message : "Server error"}) ; 
     }
 }
+
+export async function getNotes(req , res) {
+    try{
+        const name = req.params.name;
+        const course = req.params.course;
+        console.log(name , course) ; 
+        const response = await Notes.find({submittedby : name , course : course});
+        return res.status(201).json(response) ; 
+    }catch(e){
+        console.log(e) ;
+        return res.status(500).json({message : "Server error"}) ; 
+    }
+}
+
+export async function getPYQs(req , res) {
+    try{
+        const name = req.params.name;
+        const course = req.params.course;
+        console.log(name , course) ; 
+        const response = await PYQs.find({submittedby : name , course : course});
+        return res.status(201).json(response) ; 
+    }catch(e){
+        console.log(e) ;
+        return res.status(500).json({message : "Server error"}) ; 
+    }
+}
+

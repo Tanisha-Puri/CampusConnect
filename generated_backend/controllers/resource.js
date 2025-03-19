@@ -1,7 +1,8 @@
-import StudyMaterial from '../models/studymaterial.js' ; 
+import PyqSchema from '../models/pyq.js' ; 
 import Course from '../models/courses.js';
+import NotesSchema from '../models/notes.js';
 
-export  async function handleResourceSubmision(req , res ) {
+export  async function handlePYQSubmision(req , res ) {
     try{ 
      const { title , type,mode , marks , time , year , url ,  course} = req.body ; 
         
@@ -12,7 +13,7 @@ export  async function handleResourceSubmision(req , res ) {
      }
       
  
-     const resource = await StudyMaterial.create({
+     const resource = await PyqSchema.create({
         title , type,mode , marks , time , year , url ,  course
      }) ; 
  
@@ -36,11 +37,44 @@ export  async function handleResourceSubmision(req , res ) {
      
  }; 
 
- export  async function getResources(req , res ) {
+ export  async function handleNotesSubmision(req , res ) {
+    try{ 
+     const { title , desciption ,course, submittedby , url} = req.body ; 
+        
+     const checkCourse = await Course.findOne({title:course }) ;
+
+     if(!checkCourse){
+        return res.status(404).json({message:"Course not found"}) ;
+     }
+      
+ 
+     const resource = await NotesSchema.create({
+        title , desciption ,course, submittedby , url
+     }) ; 
+ 
+     const userResponse = { 
+         title : resource.title , 
+         description : resource.description , 
+         url : resource.url , 
+         course : resource.course ,
+         submittedby : resource.submittedby,
+     };
+ 
+     return res.status(201).json(userResponse);
+ }
+     catch (error) {
+         console.log(error);
+         return res.status(500).json({ message: "Server error" });
+     }
+ 
+     
+ }; 
+
+ export  async function getPYQs(req , res ) {
     try{ 
      const course =  req.params.slug ; 
     console.log(course) ; 
-     const response = await StudyMaterial.find({course: course }) ;
+     const response = await PyqSchema.find({course: course }) ;
      return res.status(201).json(response);
  }
      catch (error) {
@@ -50,3 +84,23 @@ export  async function handleResourceSubmision(req , res ) {
  
  }; 
 
+ export  async function getNotes(req , res ) {
+    try{ 
+     const course =  req.params.slug ; 
+    console.log(course) ; 
+     const response = await NotesSchema.find({course: course }) ;
+     return res.status(201).json(response);
+ }
+     catch (error) {
+         console.log(error);
+         return res.status(500).json({ message: "Server error" });
+     }
+ 
+ }; 
+
+
+
+//  router.post("/notes/submit",handleNotesSubmision);
+// router.post("/pyq/submit",handlePYQSubmision);
+// router.get("/notes/:slug" , getNotes) ; 
+// router.get("/pyq/:slug" , getPYQs) ; 
