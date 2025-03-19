@@ -7,9 +7,14 @@ function Courses() {
   const navigate = useNavigate();
   const [coursesData, setCoursesData] = useState([]); // ✅ Use state to store courses
 
-  const handleOpen = (title) => {
-    navigate(`/grid/${slugify(title)}`); // ✅ Navigate correctly
+  const handleOpenNotes = (title) => {
+    navigate(`/grid/${slugify(title)}?view=notes`);
   };
+  
+  const handleOpenPYQ = (title) => {
+    navigate(`/grid/${slugify(title)}?view=pyq`);
+  };
+
 
   useEffect(() => {
     const getData = async () => {
@@ -34,8 +39,8 @@ function Courses() {
             <h3>{course.title}</h3>
             <p>{course.branch}</p>
             <div className='btn-box'> 
-            <button className="open-button" onClick={() => handleOpen(course.title)}>Notes</button>
-            <button className="open-button" onClick={() => handleOpen(course.title)}>PYQs</button>
+            <button className="open-button" onClick={() => handleOpenNotes(course.title)}>Notes</button>
+            <button className="open-button" onClick={() => handleOpenPYQ(course.title)}>PYQs</button>
             </div>
           </div>
         ))}

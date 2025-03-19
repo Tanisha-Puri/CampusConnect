@@ -37,6 +37,7 @@ function App() {
         {/* <Route path="/upload" element={<Fillform />} /> */}
         {/* <Route path="/admin" element={<Admin />} /> */}
         <Route path="/grid/:slug" element={<Grid />} />
+       
 
         <Route path="/faculty/:slug" element={<FacultyResource />} />
         <Route path="/TA" element={<TA />} />
