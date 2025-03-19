@@ -5,16 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; 
 import './Courseform.css' ; 
 
-const ResourceForm  = () => {
+const NotesForm  = () => {
     
         const [title, setTitle] = useState("");
-        const [type, setType] = useState("");
-        const [mode, setMode] = useState("Offline"); // Default value as per schema
-        const [marks, setMarks] = useState("");
-        const [time, setTime] = useState("");
-        const [year, setYear] = useState("");
+        // const [type, setType] = useState("");
+        // const [mode, setMode] = useState("Offline"); // Default value as per schema
+        // const [marks, setMarks] = useState("");
+        // const [time, setTime] = useState("");
+        // const [year, setYear] = useState("");
         const [url, setUrl] = useState("");
         const [course, setCourse] = useState("") ; 
+        const [description, setdescription] = useState("") ; 
+        const [submittedby, setsubmittedby] = useState("") ; 
         
     const [isModalOpen, setIsModalOpen] = useState(false);
         const [modalMessage, setModalMessage] = useState('');
@@ -28,7 +30,7 @@ const ResourceForm  = () => {
 
         try {
             console.log("Form is being submitted ") ; 
-            const response = await axios.post('http://localhost:8000/resource/submit', {title , type , mode , marks , time , year , url , course } );
+            const response = await axios.post('http://localhost:8000/resource/notes/submit', {title , description , submittedby , url , course } );
             setModalMessage('Submission successful!');
             setIsModalOpen(true);
             setTimeout(() => {
@@ -61,7 +63,7 @@ const ResourceForm  = () => {
         />
     </div>
     
-    <div className="input-group">
+    {/* <div className="input-group">
         <select 
             id="type" 
             name="type" 
@@ -75,9 +77,9 @@ const ResourceForm  = () => {
             <option value="Assignment">Assignment</option>
             <option value="Quiz">Quiz</option>
         </select>
-    </div>
+    </div> */}
 
-    <div className="input-group">
+    {/* <div className="input-group">
         <select 
             id="mode" 
             name="mode" 
@@ -89,9 +91,9 @@ const ResourceForm  = () => {
             <option value="Online">Online</option>
             <option value="Offline">Offline</option>
         </select>
-    </div>
+    </div> */}
 
-    <div className="input-group">
+    {/* <div className="input-group">
         <input 
             type="number" 
             id="marks" 
@@ -101,9 +103,9 @@ const ResourceForm  = () => {
             placeholder="Enter Marks" 
             required 
         />
-    </div>
+    </div> */}
 
-    <div className="input-group">
+    {/* <div className="input-group">
         <input 
             type="number" 
             id="time" 
@@ -112,9 +114,9 @@ const ResourceForm  = () => {
             onChange={(e) => setTime(e.target.value)} 
             placeholder="Enter Time (Optional)" 
         />
-    </div>
+    </div> */}
 
-    <div className="input-group">
+    {/* <div className="input-group">
         <input 
             type="number" 
             id="year" 
@@ -124,7 +126,7 @@ const ResourceForm  = () => {
             placeholder="Enter Year" 
             required 
         />
-    </div>
+    </div> */}
 
     <div className="input-group">
         <input 
@@ -150,6 +152,29 @@ const ResourceForm  = () => {
         />
     </div>
 
+    <div className="input-group">
+        <input 
+            type="text" 
+            id="submittedby" 
+            name="submittedby" 
+            value={submittedby} 
+            onChange={(e) => setsubmittedby(e.target.value)} 
+            placeholder="Enter Your Name" 
+            required 
+        />
+    </div>
+
+
+    <div className="input-group">
+    <textarea 
+        id="description" 
+        name="description" 
+        value={description} 
+        onChange={(e) => setdescription(e.target.value)} 
+        placeholder="Enter Description" 
+        required 
+    />
+</div>
     <button type="submit" className="submit-btn">Submit</button>
 </form>
 
@@ -171,7 +196,7 @@ const ResourceForm  = () => {
     );
   };
   
-  export default ResourceForm;
+  export default NotesForm;
 
 
   // {

@@ -15,9 +15,10 @@ import TA from './Pages/TA';
 import Signup from './Pages/Signup';
 import Forget from './Pages/Resetpassword';
 import CouseForm from './Pages/Courseform';
-import ResourceForm from './Pages/Resourceform';
+import PYQForm from './Pages/PYQform';
 import slug from 'slugify' ; 
 import FacultyForm from './Pages/FacultySignup';
+import NotesForm from './Pages/NotesForm'; 
 
 console.log('App component rendered');
 function App() {
@@ -43,7 +44,8 @@ function App() {
         <Route path="/TA" element={<TA />} />
         <Route path="/reset-password" element={<Forget />} />
         <Route path="/register-course" element={<CouseForm />} />
-        <Route path="/resource-form" element={<ResourceForm />} />
+        <Route path="/pyq-form" element={<PYQForm />} />
+        <Route path="/notes-form" element={<NotesForm />} />
         <Route path="/faculty-form" element={<FacultyForm />} />
         
        
