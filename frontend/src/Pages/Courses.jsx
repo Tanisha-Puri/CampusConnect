@@ -8,11 +8,11 @@ function Courses() {
   const [coursesData, setCoursesData] = useState([]); // ✅ Use state to store courses
 
   const handleOpenNotes = (title) => {
-    navigate(`/grid/${slugify(title)}?view=notes`);
+    navigate(`/grid/${slugify(title)}?view=notes&faculty=all`);
   };
   
   const handleOpenPYQ = (title) => {
-    navigate(`/grid/${slugify(title)}?view=pyq`);
+    navigate(`/grid/${slugify(title)}?view=pyq&faculty=all`);
   };
 
 

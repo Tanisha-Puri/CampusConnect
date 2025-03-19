@@ -11,9 +11,14 @@ import slugify from 'slugify' ;
   function FacultyResource() {
     const navigate = useNavigate();
     const { slug } = useParams();
-     const handleOpen = (title) => {
-        navigate(`/grid/${slugify(title)}`); // ✅ Navigate correctly
-      };
+     
+      const handleOpenNotes = (title) => {
+          navigate(`/grid/${slugify(title)}?view=notes&faculty=${slug}`);
+        };
+        
+        const handleOpenPYQ = (title) => {
+          navigate(`/grid/${slugify(title)}?view=pyq&faculty=${slug}`);
+        };
     
 
     const [coursesData, setCoursesData] = useState([]); // Initialize state
@@ -49,7 +54,10 @@ import slugify from 'slugify' ;
             <div className="course-item" key={index}>
             <h3>{course.title}</h3>
             <p>{course.branch}</p>
-            <button className="open-button" onClick={() => handleOpen(course.title)}>Open</button>
+            <div className="btn-box">
+            <button className="open-button" onClick={() => handleOpenNotes(course.title)}>Notes</button>
+            <button className="open-button" onClick={() => handleOpenPYQ(course.title)}>PYQs</button>
+            </div>
           </div>
           ))}
         </div>

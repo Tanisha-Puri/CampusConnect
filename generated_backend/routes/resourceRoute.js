@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post("/notes/submit",handleNotesSubmision);
 router.post("/pyq/submit",handlePYQSubmision);
-router.get("/notes/:slug" , getNotes) ; 
-router.get("/pyq/:slug" , getPYQs) ; 
+router.get("/all/notes/:slug" , getNotes) ; 
+router.get("/all/pyq/:slug" , getPYQs) ; 
 
 
 export default router;  

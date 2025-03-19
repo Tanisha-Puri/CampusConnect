@@ -13,16 +13,20 @@ const Grid = () => {
   // Use the built-in URLSearchParams API:
   const searchParams = new URLSearchParams(location.search);
   const view = searchParams.get('view');
+  const faculty = searchParams.get('faculty');
   
-  
-
   // Fetch data when component mounts
   useEffect(() => {
     const getData = async () => {
       try {
         console.log(view);
         console.log(slug);
-        const response = await fetch(`http://localhost:8000/resource/${view}/${slug}`); // Use slug in the URL
+        console.log(faculty);
+        const response = await (
+          faculty === 'all'
+            ? fetch(`http://localhost:8000/resource/all/${view}/${slug}`)
+            : fetch(`http://localhost:8000/faculty/${faculty}/${view}/${slug}`)
+        );
         const data = await response.json(); 
         if (Array.isArray(data) && data.length === 0) {
           console.log("No data found");
