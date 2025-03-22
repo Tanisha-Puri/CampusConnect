@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; 
 import './Courseform.css' ; 
@@ -24,6 +24,29 @@ const NotesForm  = () => {
         const closeModal = () => {
             setIsModalOpen(false);
           };
+        
+          useEffect(() => {
+            const userData = localStorage.getItem('user'); 
+            console.log("Raw user data from localStorage:", userData); // Debugging step
+        
+            if (userData) {
+                try {
+                    const loggedInUser = JSON.parse(userData);
+                    console.log("Parsed user:", loggedInUser); // Debugging step
+        
+                    if (loggedInUser?.name) {
+                        setsubmittedby(loggedInUser.name); // Use 'name' field from schema
+                    } else {
+                        console.error("User data does not contain 'name'");
+                    }
+                } catch (error) {
+                    console.error("Error parsing user data:", error);
+                }
+            } else {
+                console.warn("No user found in localStorage");
+            }
+        }, []);
+        
 
     const handleSubmit = async (e) => {
         e.preventDefault();

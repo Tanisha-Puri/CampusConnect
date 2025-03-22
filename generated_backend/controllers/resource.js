@@ -14,7 +14,8 @@ export  async function handlePYQSubmision(req , res ) {
       
  
      const resource = await PyqSchema.create({
-        title , type,mode , marks , time , year , url ,  course
+        title , type,mode , marks , time , year , url ,  course,
+        submittedby: req.user.name
      }) ; 
  
      const userResponse = { 
@@ -25,6 +26,7 @@ export  async function handlePYQSubmision(req , res ) {
          year : resource.year ,
          url : resource.url , 
          course : resource.course ,
+         submittedby: req.user.name
      };
  
      return res.status(201).json(userResponse);
@@ -39,7 +41,7 @@ export  async function handlePYQSubmision(req , res ) {
 
  export  async function handleNotesSubmision(req , res ) {
     try{ 
-     const { title , desciption ,course, submittedby , url} = req.body ; 
+     const { title , description ,course, submittedby , url} = req.body ; 
         
      const checkCourse = await Course.findOne({title:course }) ;
 
@@ -49,7 +51,8 @@ export  async function handlePYQSubmision(req , res ) {
       
  
      const resource = await NotesSchema.create({
-        title , desciption ,course, submittedby , url
+        title , description ,course, submittedby , url,
+        submittedby: req.user.name
      }) ; 
  
      const userResponse = { 
@@ -74,7 +77,7 @@ export  async function handlePYQSubmision(req , res ) {
     try{ 
      const course =  req.params.slug ; 
     console.log(course) ; 
-     const response = await PyqSchema.find({course: course }) ;
+    const response = await PyqSchema.find({ course }).populate('submittedby', 'name');
      return res.status(201).json(response);
  }
      catch (error) {
@@ -88,7 +91,7 @@ export  async function handlePYQSubmision(req , res ) {
     try{ 
      const course =  req.params.slug ; 
     console.log(course) ; 
-     const response = await NotesSchema.find({course: course }) ;
+    const response = await NotesSchema.find({ course }).populate('submittedby', 'name');
      return res.status(201).json(response);
  }
      catch (error) {
