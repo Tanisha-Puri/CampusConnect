@@ -191,3 +191,24 @@ export const handleSendOtp = async (req, res) => {
       res.status(500).json({ message: 'Failed to verify OTP. Please try again later.' });
     }
   };
+
+  export async function fetchUser(req, res) {
+    const { id } = req.body; // id is a string of MongoDB's _id
+    
+    try {
+      const user = await User.findById(id);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      
+      return res.json({
+        name: user.name,
+        email: user.email,
+        mobile: user.mobile,
+      });
+    } catch (error) {
+      console.error('Error finding user:', error);
+      return res.status(500).json({ message: 'Failed to fetch user. Please try again later.' });
+    }
+  }
+  

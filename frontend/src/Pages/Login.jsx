@@ -21,8 +21,9 @@ function Login() {
             console.log("Form is being submitted ") ; 
             const response = await axios.post('http://localhost:8000/user/login', { email, password }, { withCredentials: true });
             setModalMessage('Login successful!');
-            localStorage.setItem('user', JSON.stringify(response.data.id));
+            localStorage.setItem('user', (response.data.id).toString());
             localStorage.setItem('userRole', response.data.role);
+            // console.log(localStorage.user);
             setIsModalOpen(true);
             setTimeout(() => {
                 setIsModalOpen(false);

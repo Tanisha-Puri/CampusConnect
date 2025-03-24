@@ -83,6 +83,10 @@ export async function getNotes(req , res) {
     try{
         const name = req.params.name;
         const course = req.params.course;
+        if(course==="all"){
+            const response = await Notes.find({submittedby : name });
+        return res.status(201).json(response) ; 
+        }
         console.log(name , course) ; 
         const response = await Notes.find({submittedby : name , course : course});
         return res.status(201).json(response) ; 
@@ -96,6 +100,11 @@ export async function getPYQs(req , res) {
     try{
         const name = req.params.name;
         const course = req.params.course;
+
+        if(course==="all"){
+            const response = await PYQs.find({submittedby : name });
+        return res.status(201).json(response) ; 
+        }
         console.log(name , course) ; 
         const response = await PYQs.find({submittedby : name , course : course});
         return res.status(201).json(response) ; 
@@ -104,4 +113,41 @@ export async function getPYQs(req , res) {
         return res.status(500).json({message : "Server error"}) ; 
     }
 }
+
+export async function getNotespost(req , res) {
+    
+    try{
+        const name = req.body.name;
+        const course = req.body.course;
+        if(course==="all"){
+            const response = await Notes.find({submittedby : name });
+        return res.status(201).json(response) ; 
+        }
+        console.log(name , course) ; 
+        const response = await Notes.find({submittedby : name , course : course});
+        return res.status(201).json(response) ; 
+    }catch(e){
+        console.log(e) ;
+        return res.status(500).json({message : "Server error"}) ; 
+    }
+}
+
+export async function getPYQspost(req , res) {
+    try{
+        const name = req.body.name;
+        const course = req.body.course;
+
+        if(course==="all"){
+            const response = await PYQs.find({submittedby : name });
+        return res.status(201).json(response) ; 
+        }
+        console.log(name , course) ; 
+        const response = await PYQs.find({submittedby : name , course : course});
+        return res.status(201).json(response) ; 
+    }catch(e){
+        console.log(e) ;
+        return res.status(500).json({message : "Server error"}) ; 
+    }
+}
+
 

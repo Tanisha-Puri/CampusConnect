@@ -9,7 +9,7 @@ const pyqSchema = new mongoose.Schema({
     year: { type: Number, required: true },
     url: { type: String, required: true },
     course: { type: String, required: true },
-    submittedby: { type: mongoose.Schema.Types.ObjectId, ref: "user", required: true }, // 🔹 Added reference to User model
+    submittedby: {type : String , required: true }, // 🔹 Added reference to User model
 }, { timestamps: true });
 
 const PyqSchema = mongoose.model("pyq", pyqSchema);

@@ -9,24 +9,49 @@ const Profile = () => {
   const [pyqs, setPYQs] = useState([]);
   const role = localStorage.getItem("userRole"); // Get role from localStorage
 
+  // Fetch user profile details
   useEffect(() => {
-    // Fetch user profile details
-    axios.get("http://localhost:8000/profile").then((res) => {
-      setUser(res.data);
-    });
-
-    if (role === "Teacher") {
-      // Fetch uploaded resources
-      axios.get("http://localhost:8000/teacher/resources").then((res) => {
-        setResources(res.data);
+    
+    axios
+      .post("http://localhost:8000/user/get-user", { id: localStorage.user })
+      .then(response => {
+        setUser(response.data);
+      })
+      .catch(error => {
+        console.error(error);
       });
+  }, []);
 
-      // Fetch uploaded PYQs
-      axios.get("http://localhost:8000/teacher/pyqs").then((res) => {
-        setPYQs(res.data);
-      });
-    }
-  }, [role]);
+  // Fetch notes and PYQs once the user data is loaded and if the role is Teacher
+  // useEffect() => {
+    useEffect(() => {
+      if (role === "Teacher" && user?.name) {
+        console.log("Teacher:", user.name);
+        
+        // Send POST request to fetch notes/resources
+        axios.post("http://localhost:8000/faculty/notes", {
+          name: user.name,
+          course: "all" // modify this as needed
+        })
+        .then((res) => {
+          console.log("Fetched resources:", res.data);
+          setResources(res.data);
+        })
+        .catch(error => console.error("Error fetching resources:", error));
+    
+        // Send POST request to fetch PYQs
+        axios.post("http://localhost:8000/faculty/pyq", {
+          name: user.name,
+          course: "all" // modify this as needed
+        })
+        .then((res) => {
+          console.log("Fetched PYQs:", res.data);
+          setPYQs(res.data);
+        })
+        .catch(error => console.error("Error fetching PYQs:", error));
+      }
+    }, [role, user]);
+    
 
   return (
     <div>
@@ -50,7 +75,6 @@ const Profile = () => {
             <div className="contact-info">
               <h3>Contact Information</h3>
               <p>Phone: <a href={`tel:${user?.mobile}`}>{user?.mobile || "N/A"}</a></p>
-              <p>Address: {user?.address || "N/A"}</p>
               <p>Email: <a href={`mailto:${user?.email}`}>{user?.email || "N/A"}</a></p>
             </div>
           </div>
@@ -92,11 +116,17 @@ const Profile = () => {
                     <h3>Your Uploaded Resources</h3>
                     {resources.length > 0 ? (
                       <ul>
-                        {resources.map((res, index) => (
-                          <li key={index}>
-                            <strong>{res.title}</strong> - <a href={res.url} target="_blank" rel="noopener noreferrer">View</a>
-                          </li>
-                        ))}
+                        {resources.map((res, index) => {
+                          const url = res.url.startsWith('http') ? res.url : `http://${res.url}`;
+                          return (
+                            <li key={index}>
+                              <strong>{res.title}</strong> -{' '}
+                              <a href={url} target="_blank" rel="noopener noreferrer">
+                                View
+                              </a>
+                            </li>
+                          );
+                        })}
                       </ul>
                     ) : (
                       <p>No resources uploaded yet.</p>

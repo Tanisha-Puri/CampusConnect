@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import './Navbar.css';
 import { Link } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
@@ -6,10 +6,17 @@ import 'react-confirm-alert/src/react-confirm-alert.css';  // Make sure CSS is i
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    // const role = ;   
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+     const [role, setRole] = useState(null);
+      useEffect(() => {
+        const storedRole = localStorage.getItem("userRole");
+        setRole(storedRole);
+      }, []);
 
     const handleLogout = () => {
         console.log("Logout button is clicked")
@@ -43,11 +50,23 @@ function Navbar() {
           
             <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
                 <Link to="/" className="nav-item">Home</Link>
-                <Link to="/course" className="nav-item">Courses</Link>
+
+                {role === "student" ? (
+                <> <Link to="/course" className="nav-item">Courses</Link>
                 <Link to="/faculty" className="nav-item">Faculty</Link>
-                
                 <Link to="/profile" className="nav-item">Profile</Link>
-                <Link to="/admin" className="nav-item">Faculty Profile</Link>
+                </>
+               ):
+
+                (
+                <><Link to="/notes-form" className="nav-item">Add Resouces</Link>
+                <Link to="/pyq-form" className="nav-item">Add PYQs</Link>
+                <Link to="/profile" className="nav-item">Profile</Link>
+              </>)
+
+                }
+                
+                {/* <Link to="/admin" className="nav-item">Faculty Profile<?/Link> */}
                 <button className="nav-item"  onClick={handleLogout} >Logout </button> 
             </div>
             <div className="navbar-toggle" onClick={toggleMenu}>
