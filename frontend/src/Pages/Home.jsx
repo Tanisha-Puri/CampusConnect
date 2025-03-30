@@ -29,6 +29,7 @@ const Home = () => {
                 <>
                   <Link to="/notes-form" className="cta-button">Add Resources</Link>
                   <Link to="/pyq-form" className="cta-button">Add PYQs</Link>
+                  <Link to="/book-room" className="cta-button">Book Room</Link>
                 </>
               ) : (
                 <p>Loading...</p>

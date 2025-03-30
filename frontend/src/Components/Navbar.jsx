@@ -61,6 +61,7 @@ function Navbar() {
                 (
                 <><Link to="/notes-form" className="nav-item">Add Resouces</Link>
                 <Link to="/pyq-form" className="nav-item">Add PYQs</Link>
+                <Link to="/book-room" className="nav-item">Book Room</Link>
                 <Link to="/profile" className="nav-item">Profile</Link>
               </>)
 

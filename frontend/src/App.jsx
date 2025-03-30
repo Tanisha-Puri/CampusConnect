@@ -19,7 +19,7 @@ import PYQForm from './Pages/PYQform';
 import slug from 'slugify' ; 
 import FacultyForm from './Pages/FacultySignup';
 import NotesForm from './Pages/NotesForm'; 
-
+import BookingForm from './Pages/BookRoom';
 console.log('App component rendered');
 function App() {
   return (
@@ -38,6 +38,7 @@ function App() {
         {/* <Route path="/upload" element={<Fillform />} /> */}
         {/* <Route path="/admin" element={<Admin />} /> */}
         <Route path="/grid/:slug" element={<Grid />} />
+        <Route path="/book-room" element={<BookingForm />} />
        
 
         <Route path="/faculty/:slug" element={<FacultyResource />} />
