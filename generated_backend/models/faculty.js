@@ -9,7 +9,8 @@ const facultySchema = new mongoose.Schema({
   otp: { type: String, default: () => Math.floor(100000 + Math.random() * 900000).toString() }, 
   courses: { type: Array }, 
   position: { type: String, default: "assistant", required: true }  , 
-  image : {type:String , requires : true}
+  image : {type:String , requires : true} , 
+  bookings : {type : Array},
 });
 
   

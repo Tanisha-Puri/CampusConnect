@@ -6,6 +6,7 @@ import courseRoute from "./routes/courseRoute.js";
 import userRoute from "./routes/userRoute.js" ;
 import resourceRoute from "./routes/resourceRoute.js";
 import facultyRoute from './routes/facultyRoute.js' ; 
+import roomRoute from './routes/room.js';
 const app = express();
 const PORT = 8000;
 
@@ -25,6 +26,7 @@ app.use("/user",userRoute);
 app.use("/course",courseRoute);
 app.use("/resource",resourceRoute);
 app.use("/faculty",facultyRoute);
+app.use("/room", roomRoute);
 
 
 app.listen(PORT,()=>{
