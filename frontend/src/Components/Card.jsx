@@ -3,7 +3,7 @@ import './Card.css';
 import { Link } from 'react-router-dom';
 
 
-const Card = ({ mode, year, title, type, marks, time, url, course }) => {
+const Card = ({ mode, year, title, type, marks, time, url, course ,onBookmark}) => {
   return (
     <div className="card">
       <div className="card-content">
@@ -15,9 +15,11 @@ const Card = ({ mode, year, title, type, marks, time, url, course }) => {
           <p><strong>Mode:</strong> {mode}</p>
           <p><strong>Marks:</strong> {marks}</p>
           <p><strong>Time:</strong> {time}</p>
+          
         </div>
         {/* Corrected Link */}
         <Link to={`${url}`} className="card-link">View Details</Link>
+        <button onClick={onBookmark}>Bookmark</button>
       </div>
     </div>
   );

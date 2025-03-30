@@ -3,7 +3,7 @@ import './NotesCard.css';
 import { Link } from 'react-router-dom';
 
 
-const NotesCard = ({ title, submittedby ,  url, course , description  }) => {
+const NotesCard = ({ title, submittedby ,  url, course , description , onBookmark  }) => {
   return (
     <div className="card">
       <div className="card-content">
@@ -18,6 +18,7 @@ const NotesCard = ({ title, submittedby ,  url, course , description  }) => {
         </div>
         {/* Corrected Link */}
         <Link to={`${url}`} className="card-link">View Details</Link>
+        <button onClick={onBookmark}>Bookmark</button>
       </div>
     </div>
   );

@@ -43,6 +43,26 @@ const Grid = () => {
     getData(); // Fetch data when component mounts
   }, [slug]); // Dependency array should include `slug`
 
+  const handleBookmark = (resource) => {
+    // Retrieve current bookmarks (if any)
+    const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+    
+    // Optional: check to avoid duplicates
+    const isAlreadyBookmarked = savedBookmarks.find(
+      (item) => item.url === resource.url
+    );
+    if (isAlreadyBookmarked) {
+      alert("Already bookmarked!");
+      return;
+    }
+  
+    // Add the new resource to bookmarks
+    const updatedBookmarks = [...savedBookmarks, resource];
+    localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
+    alert("Resource bookmarked!");
+  };
+  
+
   return (
     <div className="gallery-container">
       <Navbar />
@@ -50,35 +70,40 @@ const Grid = () => {
       {view==='pyq' && <h1>PYQ</h1>}
       {view==='notes' && <h1>Notes</h1>}
       {noDataFound && <div className='notfound'> No data found </div>}
-      {!noDataFound && view==='pyq' && <div className="scroll-container">
-        {coursesData.map((resource, index) => (
-          <Card 
-            key={index}
-            year={resource.year }
-            mode={resource.mode}
-            title={resource.title} 
-            type={resource.type} 
-            marks={resource.marks} 
-            time={resource.time}
-            url={resource.url} 
-            course={resource.course}
-          />
-        ))}
-      </div>
-} {!noDataFound && view==='notes' && <div className="scroll-container">
-        {coursesData.map((resource, index) => (
-          <NotesCard 
-            key={index}
-            
-            title={resource.title} 
-            submittedby={resource.submittedby}
-            description={resource.description}
-            url={resource.url} 
-            course={resource.course}
-          />
-        ))}
-      </div>
-}
+      {!noDataFound && view === 'pyq' && (
+  <div className="scroll-container">
+    {coursesData.map((resource, index) => (
+      <Card 
+        key={index}
+        year={resource.year}
+        mode={resource.mode}
+        title={resource.title} 
+        type={resource.type} 
+        marks={resource.marks} 
+        time={resource.time}
+        url={resource.url} 
+        course={resource.course}
+        onBookmark={() => handleBookmark(resource)} // pass bookmark handler
+      />
+    ))}
+  </div>
+)}
+{!noDataFound && view === 'notes' && (
+  <div className="scroll-container">
+    {coursesData.map((resource, index) => (
+      <NotesCard 
+        key={index}
+        title={resource.title} 
+        submittedby={resource.submittedby}
+        description={resource.description}
+        url={resource.url} 
+        course={resource.course}
+        onBookmark={() => handleBookmark(resource)} // pass bookmark handler
+      />
+    ))}
+  </div>
+)}
+
     </div>
   );
 };
