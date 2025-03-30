@@ -161,7 +161,7 @@ const Profile = () => {
                     )}
                   </div>
 
-                  <div className="card rectangle-card">
+                  {/* <div className="card rectangle-card">
                     <h3>Your Uploaded PYQs</h3>
                     {pyqs.length > 0 ? (
                       <ul>
@@ -184,7 +184,7 @@ const Profile = () => {
                     ) : (
                       <p>No PYQs uploaded yet.</p>
                     )}
-                  </div>
+                  </div> */}
                 </>
               )}
             </div>
