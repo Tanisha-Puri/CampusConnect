@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './BookingForm.css';
+
 
 function BookingForm() {
   const [formData, setFormData] = useState({
@@ -39,7 +41,7 @@ function BookingForm() {
   
 
   return (
-    <div>
+    <div className="booking-form-container">
       <h2>Book a Room</h2>
       <form onSubmit={handleSubmit}>
         <div>

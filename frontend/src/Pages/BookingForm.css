@@ -1,0 +1,77 @@
+/* General container styling */
+.booking-form-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  margin: 20px auto;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #d0eaff, #f5faff);
+    overflow-y: auto;
+  }
+/* Heading */
+.booking-form-container h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Form styling */
+.booking-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.booking-form-container label {
+  font-weight: bold;
+  margin: 10px 0 5px;
+  text-align: left;
+  display: block;
+}
+
+/* Input fields */
+.booking-form-container input,
+.booking-form-container textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Submit Button */
+.booking-form-container button {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  box-shadow: 0px 6px 12px rgba(0, 123, 255, 0.4);
+  width: 100%;
+}
+
+.booking-form-container button:hover {
+  background: linear-gradient(to right, #0056b3, #004092);
+  box-shadow: 0px 8px 16px rgba(0, 86, 179, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Success/Error message */
+.booking-form-container p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+}

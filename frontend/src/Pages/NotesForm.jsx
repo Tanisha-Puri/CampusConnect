@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect,useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; 
-import './Courseform.css' ; 
+import './BookingForm.css';
 
 const NotesForm  = () => {
     
@@ -72,7 +72,7 @@ const NotesForm  = () => {
     };
     return (
         <>
-     <div>
+     <div className="booking-form-container">
      <form onSubmit={handleSubmit}>
     <div className="input-group">
         <input 
