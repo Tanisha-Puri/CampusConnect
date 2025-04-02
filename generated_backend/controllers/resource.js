@@ -51,7 +51,7 @@ export  async function handlePYQSubmision(req , res ) {
       
  
      const resource = await NotesSchema.create({
-        title , description ,course, submittedby , url, submittedby
+        title , description ,course, submittedby , url
         
      }) ; 
  

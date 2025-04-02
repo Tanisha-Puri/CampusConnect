@@ -15,6 +15,7 @@ const PYQForm  = () => {
         const [year, setYear] = useState("");
         const [url, setUrl] = useState("");
         const [course, setCourse] = useState("") ; 
+        const [submittedby, setsubmittedby] = useState("") ;
         
     const [isModalOpen, setIsModalOpen] = useState(false);
         const [modalMessage, setModalMessage] = useState('');
@@ -29,7 +30,7 @@ const PYQForm  = () => {
 
         try {
             console.log("Form is being submitted ") ; 
-            const response = await axios.post('http://localhost:8000/resource/pyq/submit', {title , type , mode , marks , time , year , url , course } );
+            const response = await axios.post('http://localhost:8000/resource/pyq/submit', {title , type , mode , marks , time , year , url , course, submittedby } );
             setModalMessage('Submission successful!');
             setIsModalOpen(true);
             setTimeout(() => {
@@ -147,6 +148,17 @@ const PYQForm  = () => {
             value={course} 
             onChange={(e) => setCourse(e.target.value)} 
             placeholder="Enter Course Name" 
+            required 
+        />
+    </div>
+    <div className="input-group">
+        <input 
+            type="text" 
+            id="submittedby" 
+            name="submittedby" 
+            value={submittedby} 
+            onChange={(e) => setsubmittedby(e.target.value)} 
+            placeholder="Enter Your Name" 
             required 
         />
     </div>
