@@ -4,7 +4,7 @@ import NotesSchema from '../models/notes.js';
 
 export  async function handlePYQSubmision(req , res ) {
     try{ 
-     const { title , type,mode , marks , time , year , url ,  course} = req.body ; 
+     const { title , type,mode , marks , time , year , url ,  course , submittedby} = req.body ; 
         
      const checkCourse = await Course.findOne({title:course }) ;
 
@@ -14,8 +14,8 @@ export  async function handlePYQSubmision(req , res ) {
       
  
      const resource = await PyqSchema.create({
-        title , type,mode , marks , time , year , url ,  course,
-        submittedby: req.user.name
+        title , type,mode , marks , time , year , url ,  course,submittedby
+        
      }) ; 
  
      const userResponse = { 
@@ -26,7 +26,7 @@ export  async function handlePYQSubmision(req , res ) {
          year : resource.year ,
          url : resource.url , 
          course : resource.course ,
-         submittedby: req.user.name
+         submittedby: resource.submittedby
      };
  
      return res.status(201).json(userResponse);
@@ -51,8 +51,8 @@ export  async function handlePYQSubmision(req , res ) {
       
  
      const resource = await NotesSchema.create({
-        title , description ,course, submittedby , url,
-        submittedby: req.user.name
+        title , description ,course, submittedby , url, submittedby
+        
      }) ; 
  
      const userResponse = { 
