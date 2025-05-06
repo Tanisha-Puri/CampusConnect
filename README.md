@@ -2,8 +2,6 @@
 ## Team Members -
 - Tanisha Puri
 - Prableen Kaur
-- Tanisha Rattan
-- Tanya Pattnaik
 
 Among Top 5 in Alumhack'24 conducted under the Global Alumni Meet (GAM) 2024 in IIIT Allahabad.
 
